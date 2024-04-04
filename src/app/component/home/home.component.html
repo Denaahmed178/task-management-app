@@ -1,0 +1,39 @@
+<div class="container">
+    <ng-container *ngIf="tasksService.tasks.length === 0; else tasksExist">
+        <h2 class="alert alert-danger">No tasks today</h2>
+    </ng-container>
+
+    <ng-template #tasksExist>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Task Name</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasksService.tasks; let i = index">
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.date }}</td>
+                    <td>
+                        <label class="checkbox-label">
+                            <input class="checkbox" type="checkbox" [(ngModel)]="task.status"
+                                (ngModelChange)="saveStatus(i, task.status)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                    <td>
+                        <button [routerLink]="['/task', i]" class="edit-button btn btn-primary">Edit</button>
+                        <button class="del-button btn btn-danger" (click)="deleteTask(i)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
+
+    <div>
+        <a routerLink="/add-task" class="add-button btn btn-success">Add Task</a>
+    </div>
+</div>

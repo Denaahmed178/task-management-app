@@ -1,0 +1,16 @@
+<div class="container">
+    <div *ngIf="!taskId">
+        <h1 class="alert alert-danger">NO task id</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div *ngIf="taskId">
+        <h1 class="text-center">Details of {{task.title}}</h1>
+        <input type="text" class="form-control" [(ngModel)]="task.name">
+        <textarea [(ngModel)]="task.description" placeholder="write description"> </textarea>
+        <label for="dateInput">Select a date:</label>
+        <input [(ngModel)]="task.date" type="date" id="dateInput" name="dateInput"><br><br>
+        <button class="btn =" (click)="updateTask()">Update</button>
+    </div>
+</div>

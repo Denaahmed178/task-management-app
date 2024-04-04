@@ -1,0 +1,12 @@
+<div class="container">
+    <form (ngSubmit)="saveTask(taskForm)" #taskForm="ngForm">
+        <h2 class="text-center">new task</h2>
+        <input #taskName type="text" class="form-control" placeholder="write task name" ngModel name="task" required>
+        <textarea #taskDescription class="form-control" placeholder="write description" ngModel
+            name="description"> </textarea>
+        <label for="dateInput">Select a date:</label>
+        <input #taskDate type="date" id="dateInput" name="dateInput" ngModel name="date" ><br><br>
+        <button [disabled]="taskForm.invalid" class="btn btn-success" type="submit">Save</button>
+        <a class="btn btn-primary" routerLink="/">cancel</a>
+    </form>
+</div>
